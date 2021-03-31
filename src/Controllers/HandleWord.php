@@ -2,27 +2,30 @@
 
 
 namespace App\Controllers;
-use App\Model\Word;
 
 
 class HandleWord
 {
 
+    public function __construct(){}
 
-
-    public function __construct()
+    public static function arrayObjectToString(\ArrayObject $arr): string
     {
-
+        $words = "";
+        foreach($arr as $word){
+            $words .= $word->getWord();
+        }
+        return $words;
     }
 
-    public static function arrayToString(array $words) :string
+    public static function wordToArray($word): array
     {
-        return implode("",$words);
+        return str_split(strtoupper($word));
     }
 
     public function clean(string $word): string
     {
-       return strtolower(preg_replace( '/[`^~\'"]/', null, iconv( 'UTF-8', 'ASCII//TRANSLIT', $word ) ));
+        return strtolower(preg_replace('/[`^~\'"]/', null, iconv('UTF-8', 'ASCII//TRANSLIT', $word)));
 
     }
 

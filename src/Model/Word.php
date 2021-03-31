@@ -2,8 +2,6 @@
 
 namespace App\Model;
 
-use App\Repository\WordRepository;
-use JetBrains\PhpStorm\Pure;
 
 class Word
 {
@@ -19,24 +17,28 @@ class Word
         $this->setPunctuation();
     }
 
-
     private function setPunctuation()
     {
         $this->punctuation = (new Punctuation())->definePunctuation($this->word);
     }
-
-
     private function setSize()
     {
         $this->size = strlen($this->word);
     }
 
+    public function getSize():int
+    {
+        return $this->size;
+    }
+    public function getPunctuation():int
+    {
+        return $this->punctuation;
+    }
 
     public function getWord(): string
     {
         return $this->word;
     }
-
 
     public function setWord(string $word): void
     {
