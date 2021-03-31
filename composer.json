@@ -1,0 +1,11 @@
+{
+    "name": "lucasbarbosa/monta-palavras",
+    "description": "Teste pr\u0000tico para o processo seletivo letras.com.br",
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
