@@ -6,8 +6,6 @@ error_reporting(0);
 use App\Controllers\Game;
 use App\Resources\IO;
 
-
-//
 //Monta palavras do letras - Lucas Barbosa
 //todas as informações aqui contidas estão dispostas no readme no github.
 //https://github.com/lucashbarbosa/monta-palavras#readme
