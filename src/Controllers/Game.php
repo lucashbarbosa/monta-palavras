@@ -3,6 +3,7 @@
 
 
 namespace App\Controllers;
+error_reporting(0);
 header("Content-type: text/html; charset=utf-8");
 use App\Model\Word;
 use App\Repository\WordRepository;
