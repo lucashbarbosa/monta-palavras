@@ -102,9 +102,9 @@ class Game extends App
     private function validadeBonusPositionInput(string $input)
     {
 
-        if(!preg_match("/\b[\d^\s]*\b/i", $input)){
-            $this->IO->print("Você deve digitar apenas números nesse campo");
-            $this->getBonusPosition();
+        if(preg_match("/[\D]/i", $input)){
+            $this->IO->print("Você deve digitar apenas números nesse campo, tente novamente");
+            $this->setBonusPosition();
         }
     }
 
