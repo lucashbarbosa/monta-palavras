@@ -12,9 +12,9 @@ use App\Resources\IO;
 class Game extends App
 {
     private IO $IO;
-    private string $roundInput;
+    private string $move;
     private \ArrayObject $matches;
-    private array|null $nonUsedLetters;
+    private \ArrayObject $nonUsedLetters;
     private int $record = 0;
 
     public function __construct(IO $inputOutput)
@@ -26,7 +26,9 @@ class Game extends App
 
     public function init()
     {
-        $this->getFirstInput();
+        $this->nonUsedLetters = new \ArrayObject();
+        $moveInput = $this->getUserMove();
+        $this->addNonUsedLetter(HandleWord::collectGarbage($moveInput));
         $this->setMatches();
         $this->setNonUsedLetters();
         $this->showResult();
@@ -36,8 +38,6 @@ class Game extends App
        $this->ranking(
            $this->getRankedResult(
                $this->matches));
-
-
         $this->init();
     }
 
@@ -66,41 +66,52 @@ class Game extends App
 
     public function showNonUsed(){
         if(sizeof($this->nonUsedLetters) > 0){
-            $nonUsed = "";
-            foreach($this->nonUsedLetters as $letter){
-                $nonUsed .= $letter .",";
-            }
+            $nonUsed =  implode(",", $this->nonUsedLetters->getArrayCopy());
             (sizeof($this->nonUsedLetters) > 1) ? $this->IO->print("Sobraram: {$nonUsed}") :  $this->IO->print("sobrou: {$nonUsed}");
         }else{
             $this->IO->print("NÃO SOBROU NENHUMA LETRA");
         }
-
-
     }
 
     public function welcome()
     {
         $this->IO->print("Olá, bem vindo ao Monta Palavras do Letras.com.br ");
-
     }
-    public function getFirstInput()
+
+    public function getUserMove()
     {
         $this->IO->print("#Digite as letras disponíveis nesta jogada: ");
-        $this->roundInput = $this->IO->read();
+        $moveInput = $this->IO->read();
+        $this->validadeInput($moveInput);
+        $this->move = HandleWord::cleanInput($moveInput);
+        return $moveInput;
     }
 
-    private function setNonUsedLetters()
+    private function validadeInput($input):void
     {
-        $this->nonUsedLetters  = HandleWord::wordToArray($this->nonUsedLetters(
-            HandleWord::arrayObjectToString(
-                $this->matches), $this->roundInput));
-
+        if(strlen($input) < 3){
+            $this->IO->print("Você precisa digitar ao Menos 2 letras");
+            $this->init();
+        }
     }
 
-    private function setMatches()
+    private function setNonUsedLetters():void
     {
-        $this->matches = $this->matchWords($this->roundInput, WordRepository::load());
+        $this->addNonUsedLetter($this->findMatchNonUsedLetters(HandleWord::arrayObjectToString($this->matches), $this->move));
     }
 
+    private function setMatches():void
+    {
+        $this->matches = $this->matchWords($this->move, WordRepository::load());
+    }
+
+    private function addNonUsedLetter(string|null $letter):void
+    {
+        if($letter instanceof string){
+            foreach(HandleWord::wordToArray($letter) as $char) {
+                !empty($char) ? $this->nonUsedLetters->append(trim($char)):false;
+            }
+        }
+    }
 
 }

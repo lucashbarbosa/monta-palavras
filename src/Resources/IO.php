@@ -12,12 +12,15 @@ class IO implements IOStream
     {
     }
 
-    public function read():string
+    public function read(): string
     {
+
         return trim(readline());
     }
 
-    public function print(String $message):void
+
+
+    public function print(string $message): void
     {
         echo $message . "\n";
     }

@@ -12,20 +12,27 @@ class App
     public function matchWords(string $input, array $words): \ArrayObject
     {
         $matches = new \ArrayObject();
-        foreach ($words as $word) {
-            $pattern = "/\b([" . $input . "]+)\b/i";
-            $word = (new HandleWord())->clean($word);
-            preg_match_all($pattern, $word) ?
-                $matches->append(new Word($word)) :
-                false;
+        if(sizeof($words) > 0){
+            foreach ($words as $word) {
+                $pattern = "/\b([" . $input . "]+)\b/i";
+                $word = (new HandleWord())->clean($word);
+                preg_match_all($pattern, $word) ?
+                    $matches->append(new Word($word)) :
+                    false;
+            }
         }
+
         return $matches;
     }
 
-    public function nonUsedLetters(string $matchedInlineWords, $input): string
+    public function findMatchNonUsedLetters(string $matchedInlineWords, $input): string|null
     {
-        $pattern = "([" . $matchedInlineWords . "]+)";
-        return preg_replace($pattern, "", $input, -1);
+        if(strlen($matchedInlineWords) > 0){
+            $pattern = "([" . $matchedInlineWords . "]+)";
+            return preg_replace($pattern, "", $input, -1);
+        }
+        return null;
+
     }
 
     public function getRankedResult(\ArrayObject $matches): \ArrayObject
@@ -44,4 +51,6 @@ class App
         });
         return new \ArrayObject($arrayMatches);
     }
+
+
 }

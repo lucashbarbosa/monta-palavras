@@ -18,6 +18,17 @@ class HandleWord
         return $words;
     }
 
+
+    public static function collectGarbage($input):string|bool
+    {
+        return preg_replace("/[a-zA-Z]/", "", $input);
+    }
+
+    public static function cleanInput($input):string
+    {
+        return preg_replace("/[^a-zA-Z]/", "", $input);
+    }
+
     public static function wordToArray($word): array
     {
         return str_split(strtoupper($word));
