@@ -27,7 +27,10 @@ class App
 
     public function findMatchNonUsedLetters(string $matchedInlineWords, $input): string|null
     {
+
         if(strlen($matchedInlineWords) > 0){
+            var_dump($input);
+            var_dump($matchedInlineWords);
             $pattern = "([" . $matchedInlineWords . "]+)";
             return preg_replace($pattern, "", $input, -1);
         }

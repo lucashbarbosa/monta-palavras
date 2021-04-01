@@ -107,7 +107,8 @@ class Game extends App
 
     private function addNonUsedLetter(string|null $letter):void
     {
-        if($letter instanceof string){
+
+        if(strlen($letter) && $letter != null){
             foreach(HandleWord::wordToArray($letter) as $char) {
                 !empty($char) ? $this->nonUsedLetters->append(trim($char)):false;
             }
