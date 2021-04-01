@@ -81,7 +81,7 @@ transformamos essa palavra em um array de letras, para cara letra, somamos a pon
 aqui também fazemos para cada letra a comparação se aquela posição de letra é a bonus, caso seja aquela posição é multiplicada por 2.
 - executamos o método setNonUsedLetters que transforma o array de matches em uma string e através de regex encontramos as letras do input que não fazem parte de nenhuma palavra, guardamos esses caracteres na propriedade nonUsedLetters.
 
-
+ 
 - Definidos as palavras e seus valores, agora precisamos rankear as palavras.
 - No método showResult chamamos o método ranking que é populado pelo método getRankedResult (é aqui que a mágica acontece :] )
 - pegamos o array de matches e executamos o médodo usort, que compara todas as chaves=>valores de um array, trazendo pra dentro da função anonima as posições sendo comparadas, aqui chamadas de match1 e match2.
