@@ -1,7 +1,9 @@
 <?php
-
+declare(strict_types=1);
 namespace App\Model;
 
+
+use App\Repository\WordRepository;
 
 class Word
 {
@@ -10,16 +12,16 @@ class Word
     private int $size;
     private int $punctuation;
 
-    public function __construct(string $word, int $bonusPosition)
+    public function __construct(string $word,  array $lettersPunctuation, int $bonusPosition,)
     {
         $this->setWord($word);
         $this->setSize();
-        $this->setPunctuation($bonusPosition);
+        $this->setPunctuation($bonusPosition, $lettersPunctuation);
     }
 
-    private function setPunctuation(int $bonusPosition)
+    private function setPunctuation(int $bonusPosition, array $lettersPunctuation)
     {
-        $this->punctuation = (new Punctuation())->definePunctuation($this->word, $bonusPosition);
+        $this->punctuation = (new Punctuation())->definePunctuation($this->word, $lettersPunctuation, $bonusPosition);
     }
     private function setSize()
     {

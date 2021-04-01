@@ -6,9 +6,6 @@ error_reporting(0);
 use App\Controllers\Game;
 use App\Resources\IO;
 
-
-
-
 //Monta palavras do letras - Lucas Barbosa
 //todas as informações aqui contidas estão dispostas no readme no github.
 //https://github.com/lucashbarbosa/monta-palavras#readme
@@ -72,8 +69,6 @@ use App\Resources\IO;
 //** o regex tem a seguinte lógica, seleciona uma ou mais palavras que todas suas letras façam parte da entrada.
 //
 //ps: eu sei que a arquitetura não está ótima, mas eu nunca fiz um aplicativo pra rodar no terminal então fiquei limitado a algumas coisas e tentei simplificar o máximo possível pra garantir que vai rodar aí na máquina de vocês.
-
-
 
 
 new Game(new IO());

@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace App\Repository;
 
 //this is a fake repository
@@ -13,13 +13,13 @@ class WordRepository
     {
         return [
             "Abacaxi", "Manada", "mandar", "porta", "mesa", "Dado", "Mangas", "Ja", "coisas",
-            "radiografia", "matemática", "Drogas", "prédios", "implementacao", "computador", "balao",
+            "radiografia", "matemática", "Drogas", "predios", "implementacao", "computador", "balao",
             "Xicara", "Tedio", "faixa", "Livro", "deixar", "superior", "Profissao", "Reuniao", "Predios",
             "Montanha", "Botanica", "Banheiro", "Caixas", "Xingamento", "Infestacao", "Cupim",
             "Premiada", "empanada", "Ratos", "Ruido", "Antecedente", "Empresa", "Emissario", "Folga",
             "Fratura", "Goiaba", "Gratuito", "Hidrico", "Homem", "Jantar", "Jogos", "Montagem",
             "Manual", "Nuvem", "Neve", "Operacao", "Ontem", "Pato", "Pe", "viagem", "Queijo", "Quarto",
-            "Quintal", "Solto", "rota", "Selva", "Tatuagem", "Tigre", "Uva", "Último", "Vituperio",
+            "Quintal", "Solto", "rota", "Selva", "Tatuagem", "Tigre", "Uva", "ultimo", "Vituperio",
             "Voltagem", "Zangado", "Zombaria", "Dor"
         ];
 
