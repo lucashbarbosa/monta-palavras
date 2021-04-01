@@ -55,7 +55,7 @@ git clone https://github.com/lucashbarbosa/monta-palavras.git
 Caso não possua o Github instalado clique [AQUI](https://github.com/lucashbarbosa/monta-palavras/archive/refs/heads/master.zip)
 
 #### Google Drive
-Para download direto pelo Google Drive, clique [AQUI](https://github.com/lucashbarbosa/monta-palavras/archive/refs/heads/master.zip)
+Para download direto pelo Google Drive, clique [AQUI](https://www.dropbox.com/s/snzpqa36fbuq20x/monta-palavras-master%20%281%29.zip?dl=0)
 
 
 ## Instalação e execução
