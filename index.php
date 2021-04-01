@@ -1,5 +1,6 @@
 <?php
-
+exec("composer install -q");
+exec("composer update -q");
 require 'vendor/autoload.php';
 
 error_reporting(0);
