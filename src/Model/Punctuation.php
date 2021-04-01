@@ -1,6 +1,6 @@
 <?php
 
-
+declare(strict_types=1);
 namespace App\Model;
 
 
@@ -11,9 +11,9 @@ class Punctuation
 {
 
 
-    public function definePunctuation(string $word, int $bonusPosition):int
+    public function definePunctuation(string $word, array $lettersPunctuation, int $bonusPosition):int
     {
-        $lettersPunctuation = WordRepository::getLetterPunctuation();
+
         $punctuation = 0;
         $wordArray = HandleWord::wordToArray($word);
         $i = 0;
