@@ -10,16 +10,16 @@ class Word
     private int $size;
     private int $punctuation;
 
-    public function __construct(string $word)
+    public function __construct(string $word, int $bonusPosition)
     {
         $this->setWord($word);
         $this->setSize();
-        $this->setPunctuation();
+        $this->setPunctuation($bonusPosition);
     }
 
-    private function setPunctuation()
+    private function setPunctuation(int $bonusPosition)
     {
-        $this->punctuation = (new Punctuation())->definePunctuation($this->word);
+        $this->punctuation = (new Punctuation())->definePunctuation($this->word, $bonusPosition);
     }
     private function setSize()
     {

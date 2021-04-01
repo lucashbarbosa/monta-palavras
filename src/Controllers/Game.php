@@ -13,6 +13,7 @@ class Game extends App
 {
     private IO $IO;
     private string $move;
+    private int $bonusPosition;
     private \ArrayObject $matches;
     private \ArrayObject $nonUsedLetters;
     private int $record = 0;
@@ -28,6 +29,7 @@ class Game extends App
     {
         $this->nonUsedLetters = new \ArrayObject();
         $moveInput = $this->getUserMove();
+        $this->setBonusPosition();
         $this->addNonUsedLetter(HandleWord::collectGarbage($moveInput));
         $this->setMatches();
         $this->setNonUsedLetters();
@@ -44,9 +46,11 @@ class Game extends App
     public function ranking($rankedMatches){
         $this->IO->print("Você encontrou {$rankedMatches->count()} palavras");
         $total = 0;
+        $i = 1;
         foreach($rankedMatches as $match){
-            $this->IO->print(ucfirst($match->getWord()) ." com {$match->getPunctuation()} pontos");
+            $this->IO->print("{$i}º- ".ucfirst($match->getWord()) ." com {$match->getPunctuation()} pontos");
             $total += $match->getPunctuation();
+            $i++;
         }
         $this->IO->print("Fazendo um total de {$total} pontos");
         $this->showNonUsed();
@@ -73,21 +77,38 @@ class Game extends App
         }
     }
 
-    public function welcome()
+    public function welcome():void
     {
         $this->IO->print("Olá, bem vindo ao Monta Palavras do Letras.com.br ");
     }
 
-    public function getUserMove()
+    public function setBonusPosition()
+    {
+        $this->IO->print("Digite a posição Bonus");
+        $bonusInput = $this->IO->read();
+        $this->validadeBonusPositionInput($bonusInput);
+        $this->bonusPosition = (int) $bonusInput;
+    }
+
+    public function getUserMove():string
     {
         $this->IO->print("#Digite as letras disponíveis nesta jogada: ");
         $moveInput = $this->IO->read();
-        $this->validadeInput($moveInput);
+        $this->validadeMoveInput($moveInput);
         $this->move = HandleWord::cleanInput($moveInput);
         return $moveInput;
     }
 
-    private function validadeInput($input):void
+    private function validadeBonusPositionInput(string $input)
+    {
+
+        if(!preg_match("/\b[\d^\s]*\b/i", $input)){
+            $this->IO->print("Você deve digitar apenas números nesse campo");
+            $this->getBonusPosition();
+        }
+    }
+
+    private function validadeMoveInput(string $input):void
     {
         if(strlen($input) < 3){
             $this->IO->print("Você precisa digitar ao Menos 2 letras");
@@ -102,12 +123,11 @@ class Game extends App
 
     private function setMatches():void
     {
-        $this->matches = $this->matchWords($this->move, WordRepository::load());
+        $this->matches = $this->matchWords($this->move, WordRepository::load(), $this->bonusPosition);
     }
 
     private function addNonUsedLetter(string|null $letter):void
     {
-
         if(strlen($letter) && $letter != null){
             foreach(HandleWord::wordToArray($letter) as $char) {
                 !empty($char) ? $this->nonUsedLetters->append(trim($char)):false;
