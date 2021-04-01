@@ -1,10 +1,11 @@
 <?php
-
+declare(strict_types=1);
 namespace App\Resources;
 
 
 use App\Controllers\HandleWord;
 use App\Model\Word;
+use App\Repository\WordRepository;
 
 
 class App
@@ -17,7 +18,7 @@ class App
                 $pattern = "/\b([" . $input . "]+)\b/i";
                 $word = (new HandleWord())->clean($word);
                 preg_match_all($pattern, $word) ?
-                    $matches->append(new Word($word, $bonusPosition)) :
+                    $matches->append(new Word($word, WordRepository::getLetterPunctuation() ,$bonusPosition)) :
                     false;
             }
         }

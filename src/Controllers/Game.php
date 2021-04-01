@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
 
 
 namespace App\Controllers;
+error_reporting(0);
 header("Content-type: text/html; charset=utf-8");
-use App\Model\Word;
+
 use App\Repository\WordRepository;
 use App\Resources\App;
 use App\Resources\IO;
