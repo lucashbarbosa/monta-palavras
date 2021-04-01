@@ -27,7 +27,7 @@ class Game extends App
         $this->init();
     }
 
-    public function init()
+    private function init():void
     {
         $this->nonUsedLetters = new \ArrayObject();
         $moveInput = $this->getUserMove();
@@ -38,14 +38,21 @@ class Game extends App
         $this->showResult();
     }
 
-    public function showResult(){
+    public function welcome():void
+    {
+        $this->IO->print("Olá, bem vindo ao Monta Palavras do Letras.com.br ");
+    }
+
+    public function showResult():void
+    {
        $this->ranking(
            $this->getRankedResult(
                $this->matches));
         $this->init();
     }
 
-    public function ranking($rankedMatches){
+    public function ranking($rankedMatches):void
+    {
         $this->IO->print("Você encontrou {$rankedMatches->count()} palavras");
         $total = 0;
         $i = 1;
@@ -70,7 +77,8 @@ class Game extends App
         }
     }
 
-    public function showNonUsed(){
+    public function showNonUsed():void
+    {
         if(sizeof($this->nonUsedLetters) > 0){
             $nonUsed =  implode(",", $this->nonUsedLetters->getArrayCopy());
             (sizeof($this->nonUsedLetters) > 1) ? $this->IO->print("Sobraram: {$nonUsed}") :  $this->IO->print("sobrou: {$nonUsed}");
@@ -79,12 +87,9 @@ class Game extends App
         }
     }
 
-    public function welcome():void
-    {
-        $this->IO->print("Olá, bem vindo ao Monta Palavras do Letras.com.br ");
-    }
 
-    public function setBonusPosition()
+
+    public function setBonusPosition():void
     {
         $this->IO->print("Digite a posição Bonus");
         $bonusInput = $this->IO->read();
@@ -101,7 +106,7 @@ class Game extends App
         return $moveInput;
     }
 
-    private function validadeBonusPositionInput(string $input)
+    private function validadeBonusPositionInput(string $input):void
     {
 
         if(preg_match("/[\D]/i", $input)){

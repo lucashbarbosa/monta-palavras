@@ -19,7 +19,7 @@ class WordRepository
             "Premiada", "empanada", "Ratos", "Ruido", "Antecedente", "Empresa", "Emissario", "Folga",
             "Fratura", "Goiaba", "Gratuito", "Hidrico", "Homem", "Jantar", "Jogos", "Montagem",
             "Manual", "Nuvem", "Neve", "Operacao", "Ontem", "Pato", "Pe", "viagem", "Queijo", "Quarto",
-            "Quintal", "Solto", "rota", "Selva", "Tatuagem", "Tigre", "Uva", "Último", "Vituperio",
+            "Quintal", "Solto", "rota", "Selva", "Tatuagem", "Tigre", "Uva", "ultimo", "Vituperio",
             "Voltagem", "Zangado", "Zombaria", "Dor"
         ];
 
