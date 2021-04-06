@@ -137,7 +137,7 @@ docker build -t app . && docker run -it app
 
 - então o método init é chamado novamente pronto para reiniciar a partida.
 
-*a limpeza aqui é meramente ilustrativa pois realizei manualmente a remoção de acentuação por conta do charset do linux, decidi fazer isso pela facilidade em um programa que roda em cima de http não haveria esse problema.
+*a limpeza aqui é meramente ilustrativa pois realizei manualmente a remoção de acentuação por conta do charset do linux, decidi fazer isso pela facilidade, em um programa que roda em cima de http não haveria esse problema.
 
 ** o regex tem a seguinte lógica, seleciona uma ou mais palavras que todas suas letras façam parte da entrada.
 
