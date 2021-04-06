@@ -83,7 +83,7 @@ docker build -t app . && docker run -it app
 
 ### Especificações técnicas.
 
-####Classes:
+#### Classes:
 - Controllers/Game — classe game é a interface de controle, que aqui também serve como interface de visualização, já que o programa roda no terminal.
 - Resources/App — é a classe que contém a lógica que provê os resultados para a classe Game.
 - Resources/IO - extende a Interface IOStream que define métodos de controle de entrada e saída.
@@ -111,12 +111,13 @@ docker build -t app . && docker run -it app
 - no método matchWords
     - para cada palavra no banco de palavras, limpamos* a palavra vinda do repositório.
     - é aplicado um pattern** e caso a palavra faça parte desse pattern, é adicionado ao array matches uma nova instancia de word passando o valor encontrado.
-    - Instanciando a palavra — nesse ponto vamos instanciar a palavra e já descobrir todas as informações necessárias para os cálculos de posição e valor.
+- Instanciando a palavra 
+- nesse ponto vamos instanciar a palavra e já descobrir todas as informações necessárias para os cálculos de posição e valor.
 - Ao instanciar uma nova palavra passando o seu nome o construtor da classe word automaticamente realiza os seguintes passos.
   - seta o nome da palavra.
   - encontra o tamanho da palavra.
   - define a pontuação da palavra.
-  - definindo a puntuação da palavra
+- definindo a pontuação da palavra
   - aqui, injetamos a palavra, a pontuação das letras contidas no repositório e a posição bonus, o processo é realizado de maneira simples.
   transformamos essa palavra em um array de letras, para cara letra, somamos a pontuação da posição daquela letra no array de letras (repositório).
 - aqui também fazemos para cada letra a comparação se aquela posição de letra é a bonus, caso seja aquela posição é multiplicada por 2.
