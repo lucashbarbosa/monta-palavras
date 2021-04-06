@@ -124,7 +124,7 @@ docker build -t app . && docker run -it app
 - executamos o método setNonUsedLetters que transforma o array de matches em uma string e através de regex encontramos as letras do input que não fazem parte de nenhuma palavra, guardamos esses caracteres na propriedade nonUsedLetters.
 - Definidos as palavras e seus valores, agora precisamos rankear as palavras.
 - No método showResult chamamos o método ranking que é populado pelo método getRankedResult (é aqui que a mágica acontece =] )
-- pegamos o array de matches e executamos o médodo usort, que compara todas as chaves=>valores de um array, trazendo pra dentro da função anonima as posições sendo comparadas, aqui chamadas de match1 e match2.
+- pegamos o array de matches e executamos o método usort, que compara todas as chaves=>valores de um array, trazendo pra dentro da função anonima as posições sendo comparadas, aqui chamadas de match1 e match2.
 
     - passo 1 — verificar utilizando o operador spaceship se há diferença entre as duas pontuações (lembra que já definimos isso quando estanciamos a palavra?) caso retorne 0 quer dizer que é igual, -1 que o primeiro termo é maior e 1 que o segundo termo é maior.
     - passo 2 — caso eles sejam do mesmo tamanho, precisamos ir para o segundo critério que é o tamanho da string (já definimos isso no objeto também).
